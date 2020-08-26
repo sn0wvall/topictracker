@@ -1,0 +1,11 @@
+{
+  "name": "aleveltracker",
+  "version": "1.0.0",
+  "description": "Track subjects to revise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sn0wvall",
+  "license": "ISC"
+}
