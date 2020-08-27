@@ -69,6 +69,33 @@ switch (args[2]){
                 delete topics[(args[3] - 1)]
                 fs.writeFile(`topics.json`, JSON.stringify(topics, null, 2), function () {});
                 return;
+        case "review":
+
+                if (!args[3]) return console.log("No topic number specified!")
+
+                usableIndex = args[3] - 1
+
+                switch(topics[usableIndex].repetitions) {
+                        case 0:
+                                updatedDate = topics[usableIndex].dateAdded + (168 * 60 * 60 * 1000);
+                                break;
+                        case 1:
+                                updatedDate = topics[usableIndex].dateAdded + (384 * 60 * 60 * 1000);
+                                break;
+                        default:
+                                updatedDate = topics[usableIndex].dateNext + (840 * 60 * 60 * 1000);
+                                break;
+                }
+
+                topics[usableIndex].repetitions++
+
+                topics[usableIndex].dateNext = updatedDate
+
+                fs.writeFile(`topics.json`, JSON.stringify(topics, null, 2), function () {});
+
+                console.log(`Reviewed ${topics[usableIndex].name}. You will next be reminded to review this on ${new Date(topics[usableIndex].dateNext)}`)
+
+                return;
         case "check":
                 checkTopics()
                 return;
