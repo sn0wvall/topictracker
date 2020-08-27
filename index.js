@@ -99,6 +99,12 @@ switch (args[2]){
         case "check":
                 checkTopics()
                 return;
+        case "stat":
+
+                if (!args[3]) return console.log("No topic number specified!")
+
+                console.log(topics[(args[3] - 1)].name + "\n\n" + "Date Added: " + new Date(topics[(args[3] - 1)].dateAdded) +"\n" + "Next Review Date: " + new Date(topics[(args[3] - 1)].dateNext) + "\nRepetitions: " + topics[(args[3] - 1)].repetitions)
+                return;
         case "all":
                 let u = 0
                 let y = 0
