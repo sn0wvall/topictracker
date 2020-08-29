@@ -37,7 +37,7 @@ switch (args[2]){
                 fs.writeFile('topics.json', "{\"greatest\":0}", function(){})
                 return;
         case "help":
-                console.log("<Available Commands>\n\nadd [topic name]: add a topic\nremove [number]: remove a topic")
+                console.log("<Available Commands>\n\nadd [topic name]: add a topic\nclear [number]: review a topic\nreset: remove all topics\nstat [number]: view info about a topic")
                 return;
         case "add":
                 if (!args[3]) return console.log("No topic name specified!")
@@ -64,10 +64,6 @@ switch (args[2]){
                 
                 fs.writeFile(`topics.json`, JSON.stringify(topics, null, 2), function () {});
                 console.log(`Added \"${topicName}\" to your list of topics. You will next be prompted to revise it in`)
-                return;
-        case "remove":
-                delete topics[(args[3] - 1)]
-                fs.writeFile(`topics.json`, JSON.stringify(topics, null, 2), function () {});
                 return;
         case "review":
 
